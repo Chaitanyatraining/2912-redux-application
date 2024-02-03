@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 
 const Product = () => {
     const [product, setProduct] = useState({})
+    const [added, setAdded] = useState(false)
     const { id } = useParams()
     const dispatch = useDispatch()
 
@@ -20,6 +21,7 @@ const Product = () => {
 
     const handleAdd = (product) => {
         dispatch(add(product))
+        setAdded(true)
     }
 
     return (
@@ -39,7 +41,7 @@ const Product = () => {
                             <div className='mt-2'>
                                 <button className='btn btn-warning'
                                     onClick={()=>{handleAdd(product)}}
-                                >Add to Cart</button>
+                                >{added ? 'Added' : 'Add to Cart'}</button>
                             </div>
                         </div>
                     </div>
